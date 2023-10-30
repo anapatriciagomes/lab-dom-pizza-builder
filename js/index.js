@@ -56,11 +56,6 @@ function renderPepperoni() {
       pepperoniPrice.setAttribute('hidden', 'hidden');
     }
   });
-  if (state.pepperoni === true) {
-    totalPrice += ingredients.pepperoni.price;
-  } else {
-    totalPrice -= ingredients.pepperoni.price;
-  }
 }
 
 function renderMushrooms() {
@@ -73,11 +68,6 @@ function renderMushrooms() {
       mushroomsPrice.setAttribute('hidden', 'hidden');
     }
   });
-  if (state.mushrooms === true) {
-    totalPrice += ingredients.mushrooms.price;
-  } else {
-    totalPrice -= ingredients.mushrooms.price;
-  }
 }
 
 function renderGreenPeppers() {
@@ -99,11 +89,9 @@ function renderWhiteSauce() {
   if (state.whiteSauce === true) {
     sauce.style.visibility = 'visible';
     saucePrice.removeAttribute('hidden', 'hidden');
-    totalPrice += ingredients.whiteSauce.price;
   } else {
     sauce.style.visibility = 'hidden';
     saucePrice.setAttribute('hidden', 'hidden');
-    totalPrice -= ingredients.whiteSauce.price;
   }
 }
 
@@ -134,12 +122,22 @@ function renderPrice() {
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 pepperoniButton.addEventListener('click', function () {
   state.pepperoni = !state.pepperoni;
+  if (state.pepperoni === true) {
+    totalPrice += ingredients.pepperoni.price;
+  } else {
+    totalPrice -= ingredients.pepperoni.price;
+  }
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
 mushroomsButton.addEventListener('click', function () {
   state.mushrooms = !state.mushrooms;
+  if (state.mushrooms === true) {
+    totalPrice += ingredients.mushrooms.price;
+  } else {
+    totalPrice -= ingredients.mushrooms.price;
+  }
   renderEverything();
 });
 
@@ -152,11 +150,21 @@ greenPeppersButton.addEventListener('click', function () {
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
 sauceButton.addEventListener('click', function () {
   state.whiteSauce = !state.whiteSauce;
+  if (state.whiteSauce === true) {
+    totalPrice += ingredients.whiteSauce.price;
+  } else {
+    totalPrice -= ingredients.whiteSauce.price;
+  }
   renderEverything();
 });
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
 crustButton.addEventListener('click', function () {
   state.glutenFreeCrust = !state.glutenFreeCrust;
+  if (state.glutenFreeCrust === true) {
+    totalPrice += ingredients.glutenFreeCrust.price;
+  } else {
+    totalPrice -= ingredients.glutenFreeCrust.price;
+  }
   renderEverything();
 });
