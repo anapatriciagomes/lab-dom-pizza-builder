@@ -5,6 +5,14 @@ const greenPeppersButton = document.querySelector('.btn.btn-green-peppers');
 const sauceButton = document.querySelector('.btn.btn-sauce');
 const crustButton = document.querySelector('.btn.btn-crust');
 
+const pepperoniPrice = document.querySelector('.pepperoni-price');
+const mushroomsPrice = document.querySelector('.mushrooms-price');
+const greenPeppersPrice = document.querySelector('.green-pepper-price');
+const saucePrice = document.querySelector('.white-sauce-price');
+const glutenFreeCrustPrice = document.querySelector('.gluten-free-price');
+
+const totalPriceText = document.querySelector('.total-price');
+
 // Constants
 const basePrice = 10;
 let totalPrice = basePrice;
@@ -42,40 +50,45 @@ function renderPepperoni() {
   document.querySelectorAll('.pep').forEach((onePep) => {
     if (state.pepperoni === true) {
       onePep.style.visibility = 'visible';
-      document.querySelector('.pepperoni-price').style.visibility = 'visible';
-      totalPrice += ingredients.pepperoni.price;
+      pepperoniPrice.removeAttribute('hidden', 'hidden');
     } else {
       onePep.style.visibility = 'hidden';
-      totalPrice -= ingredients.pepperoni.price;
-      document.querySelector('.pepperoni-price').style.visibility = 'hidden';
+      pepperoniPrice.setAttribute('hidden', 'hidden');
     }
   });
+  if (state.pepperoni === true) {
+    totalPrice += ingredients.pepperoni.price;
+  } else {
+    totalPrice -= ingredients.pepperoni.price;
+  }
 }
 
 function renderMushrooms() {
   document.querySelectorAll('.mushroom').forEach((oneMushroom) => {
     if (state.mushrooms === true) {
       oneMushroom.style.visibility = 'visible';
-      document.querySelector('.mushrooms-price').style.visibility = 'visible';
-      totalPrice += ingredients.mushrooms.price;
+      mushroomsPrice.removeAttribute('hidden', 'hidden');
     } else {
       oneMushroom.style.visibility = 'hidden';
-      document.querySelector('.mushrooms-price').style.visibility = 'hidden';
-      totalPrice -= ingredients.mushrooms.price;
+      mushroomsPrice.setAttribute('hidden', 'hidden');
     }
   });
+  if (state.mushrooms === true) {
+    totalPrice += ingredients.mushrooms.price;
+  } else {
+    totalPrice -= ingredients.mushrooms.price;
+  }
 }
 
 function renderGreenPeppers() {
   document.querySelectorAll('.green-pepper').forEach((oneGreenPepper) => {
     if (state.greenPeppers === true) {
       oneGreenPepper.style.visibility = 'visible';
-      document.querySelector('.green-pepper-price').style.visibility =
-        'visible';
+      greenPeppersPrice.removeAttribute('hidden', 'hidden');
       totalPrice += ingredients.greenPeppers.price;
     } else {
       oneGreenPepper.style.visibility = 'hidden';
-      document.querySelector('.green-pepper-price').style.visibility = 'hidden';
+      greenPeppersPrice.setAttribute('hidden', 'hidden');
       totalPrice -= ingredients.greenPeppers.price;
     }
   });
@@ -85,11 +98,11 @@ function renderWhiteSauce() {
   const sauce = document.querySelector('.sauce-white');
   if (state.whiteSauce === true) {
     sauce.style.visibility = 'visible';
-    document.querySelector('.white-sauce-price').style.visibility = 'visible';
+    saucePrice.removeAttribute('hidden', 'hidden');
     totalPrice += ingredients.whiteSauce.price;
   } else {
     sauce.style.visibility = 'hidden';
-    document.querySelector('.white-sauce-price').style.visibility = 'hidden';
+    saucePrice.setAttribute('hidden', 'hidden');
     totalPrice -= ingredients.whiteSauce.price;
   }
 }
@@ -98,26 +111,25 @@ function renderGlutenFreeCrust() {
   const crust = document.querySelector('.crust-gluten-free');
   if (state.glutenFreeCrust === true) {
     crust.style.visibility = 'visible';
-    document.querySelector('gluten-free-price').style.visibility = 'visible';
+    glutenFreeCrustPrice.removeAttribute('hidden', 'hidden');
     totalPrice += ingredients.glutenFreeCrust.price;
   } else {
     crust.style.visibility = 'hidden';
-    document.querySelector('gluten-free-price').style.visibility = 'hidden';
+    glutenFreeCrustPrice.setAttribute('hidden', 'hidden');
     totalPrice -= ingredients.glutenFreeCrust.price;
   }
 }
 
 function renderButtons() {
-  document.querySelectorAll('active').forEach((button) => {
+  document.querySelectorAll('.btn').forEach((button) => {
     button.classList.toggle('active');
   });
 }
 
 function renderPrice() {
+  totalPriceText.innerText = `$${totalPrice}`;
   return totalPrice;
 }
-
-renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 pepperoniButton.addEventListener('click', function () {
