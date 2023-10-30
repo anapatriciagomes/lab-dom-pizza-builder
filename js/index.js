@@ -140,6 +140,11 @@ mushroomsButton.addEventListener('click', function () {
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
 greenPeppersButton.addEventListener('click', function () {
   state.greenPeppers = !state.greenPeppers;
+  if (state.greenPeppers === true) {
+    totalPrice += ingredients.greenPeppers.price;
+  } else {
+    totalPrice -= ingredients.greenPeppers.price;
+  }
   renderEverything();
 });
 
