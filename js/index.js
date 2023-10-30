@@ -75,11 +75,9 @@ function renderGreenPeppers() {
     if (state.greenPeppers === true) {
       oneGreenPepper.style.visibility = 'visible';
       greenPeppersPrice.removeAttribute('hidden', 'hidden');
-      totalPrice += ingredients.greenPeppers.price;
     } else {
       oneGreenPepper.style.visibility = 'hidden';
       greenPeppersPrice.setAttribute('hidden', 'hidden');
-      totalPrice -= ingredients.greenPeppers.price;
     }
   });
 }
@@ -100,11 +98,9 @@ function renderGlutenFreeCrust() {
   if (state.glutenFreeCrust === true) {
     crust.style.visibility = 'visible';
     glutenFreeCrustPrice.removeAttribute('hidden', 'hidden');
-    totalPrice += ingredients.glutenFreeCrust.price;
   } else {
     crust.style.visibility = 'hidden';
     glutenFreeCrustPrice.setAttribute('hidden', 'hidden');
-    totalPrice -= ingredients.glutenFreeCrust.price;
   }
 }
 
